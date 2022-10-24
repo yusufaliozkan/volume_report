@@ -22,10 +22,8 @@ st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report process
 st.markdown("# Spiral Symplectic Report processor")
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
-d = {'col1': [1, 2], 'col2': [3, 4]}
-df1 = pd.DataFrame(data=d)
 
-df=st.text_area('Paste the volume report text here: ', ' ') #, header=None
+df=st.text_input('Paste the volume report text here: ', ' ') #, header=None
 
 copy_button = Button(label="Get Clipboard Data")
 copy_button.js_on_event("button_click", CustomJS(code="""
