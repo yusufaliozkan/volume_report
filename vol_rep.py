@@ -21,6 +21,7 @@ st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report process
 st.markdown("# Spiral Symplectic Report processor")
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
+st.markdown('* Copy the text of volume report * Paste into the box * Press')
 
 txt=st.text_area('Paste the volume report text here: ', ' ', placeholder='Enter') #, header=None
 
