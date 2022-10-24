@@ -17,13 +17,12 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 import pandas as pd
 from io import StringIO
 
-# Setting the app page layout
 st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report processor')
 st.markdown("# Spiral Symplectic Report processor")
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
 
-df=st.text_input('Paste the volume report text here: ', ' ') #, header=None
+txt=st.text_area('Paste the volume report text here: ', ' ', placeholder='Enter') #, header=None
 
 copy_button = Button(label="Get Clipboard Data")
 copy_button.js_on_event("button_click", CustomJS(code="""
@@ -38,39 +37,41 @@ result = streamlit_bokeh_events(
     debounce_time=0)
 
 if result:
-    if "GET_TEXT" in result:
+    if "GET_TEXT" in result:        
         df = pd.DataFrame(StringIO(result.get("GET_TEXT")))
         # st.table(df)
+        if df is not None:
+            df1 = df.drop([0])
+            df1[1] = df1[0].str.extract('Spiral:(.*)')
+            pattern = r'(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}[-a-zA-Z0-9()@:%_+.~#?&/=]*)' 
+            df1[2] = df1[1].str.extract(pattern, expand=True)
+            df_url = df1.drop([0,1], axis=1)
+            
+            def make_hyperlink(value):
+                url = "{}"
+                return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
+            df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
+            df_split = np.array_split(df_url, 2)
+            if df_split is not None:
 
-with st.expander('Do not check', expanded=False):
-    df1 = df.drop([0])
-    df1[1] = df1[0].str.extract('Spiral:(.*)')
-    pattern = r'(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}[-a-zA-Z0-9()@:%_+.~#?&/=]*)' 
-    df1[2] = df1[1].str.extract(pattern, expand=True)
-    df_url = df1.drop([0,1], axis=1)
 
-    def make_hyperlink(value):
-        url = "{}"
-        return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
-    df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
-    df_split = np.array_split(df_url, 2)
+                buffer = io.BytesIO()
 
-buffer = io.BytesIO()
+                today = date.today().isoformat()
+                a = 'Weekly Spiral Symplectic Report - '+today
 
-today = date.today().isoformat()
-a = 'Weekly Spiral Symplectic Report - '+today
 
-with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-    # Write each dataframe to a different worksheet.
-    df_split[0].to_excel(writer, sheet_name='Kim', header=False, index=False)
-    df_split[1].to_excel(writer, sheet_name='Yusuf', header=False, index=False)
+                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                    # Write each dataframe to a different worksheet.
+                    df_split[0].to_excel(writer, sheet_name='Kim', header=False, index=False)
+                    df_split[1].to_excel(writer, sheet_name='Yusuf', header=False, index=False)
 
-    # Close the Pandas Excel writer and output the Excel file to the buffer
-    writer.save()
+                    # Close the Pandas Excel writer and output the Excel file to the buffer
+                    writer.save()
 
-    st.download_button(
-        label="Download Excel worksheets",
-        data=buffer,
-        file_name= a+".xlsx",
-        mime="application/vnd.ms-excel"
-    )
+                st.download_button(
+                    label="Download Excel worksheets",
+                    data=buffer,
+                    file_name= a+".xlsx",
+                    mime="application/vnd.ms-excel"
+                )
