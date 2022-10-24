@@ -1,26 +1,28 @@
-# streamlit run "D:\OneDrive - Imperial College London\07.Projects\13.Data\vol_report\vol_rep.py"
-
-import pandas as pd
-import openpyxl
-# from urlextract import URLExtract
-import re
-import numpy as np
-from operator import index
-import io
-import streamlit as st
-from io import BytesIO
-from datetime import date
-
-
 # Setting the app page layout
-st.set_page_config(layout = "wide", page_title='Copyright statements dashboard', page_icon="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Copyright.svg/220px-Copyright.svg.png")
-st.markdown("# Copyright statements dashboard")
+st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report processor')
+st.markdown("# Spiral Symplectic Report processor")
 
-st.sidebar.markdown("# Copyright statements dashboard")
+st.sidebar.markdown("# Spiral Symplectic Report processor")
 
 
-# text = st.text_area('Paste the volume report here: ', ' ')
-df=pd.read_clipboard(st.text_area('Paste the volume report here: ', ' '), header=None)
+df=st.text_area('Paste the volume report text here: ', ' ') #, header=None
+
+copy_button = Button(label="Get Clipboard Data")
+copy_button.js_on_event("button_click", CustomJS(code="""
+    navigator.clipboard.readText().then(text => document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: text})))
+    """))
+result = streamlit_bokeh_events(
+    copy_button,
+    events="GET_TEXT",
+    key="get_text",
+    refresh_on_update=False,
+    override_height=75,
+    debounce_time=0)
+
+if result:
+    if "GET_TEXT" in result:
+        df = pd.DataFrame(StringIO(result.get("GET_TEXT")))
+        # st.table(df)
 
 with st.expander('Do not check', expanded=False):
     df1 = df.drop([0])
@@ -34,17 +36,6 @@ with st.expander('Do not check', expanded=False):
         return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
     df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
     df_split = np.array_split(df_url, 2)
-
-    # df['url'] = df['Journal articles with Symplectic Volume details'].str.extract('Spiral:(.*)')
-    # pattern = r'(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}[-a-zA-Z0-9()@:%_+.~#?&/=]*)' 
-    # df['Spiral url'] = df['url'].str.extract(pattern, expand=True)
-    # df_url = df.drop(['Journal articles with Symplectic Volume details','url'], axis=1).copy()
-
-    # def make_hyperlink(value):
-    #     url = "{}"
-    #     return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
-    # df_url['Spiral url'] = df_url['Spiral url'].apply(lambda x: make_hyperlink(x))
-    # df_split = np.array_split(df_url, 2)
 
 buffer = io.BytesIO()
 
@@ -65,4 +56,3 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         file_name= a+".xlsx",
         mime="application/vnd.ms-excel"
     )
-    
