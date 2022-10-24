@@ -8,6 +8,8 @@ import io
 import streamlit as st
 from io import BytesIO
 from datetime import date
+from xlsxwriter import Workbook
+
 
 from bokeh.models.widgets import Button
 from bokeh.models import CustomJS
