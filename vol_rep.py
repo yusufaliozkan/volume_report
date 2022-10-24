@@ -21,13 +21,14 @@ st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report process
 st.markdown("# Spiral Symplectic Report processor")
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
-st.markdown('* Copy the text of volume report 
-            * Paste into the box 
-            * Press')
+st.markdown('* Copy the text of volume report') 
+st.markdown('* Paste into the box below')
+st.markdown("* Click 'Process report'")
+st.markdown("* Press 'Download report'")
 
 txt=st.text_area('Paste the volume report text here: ', ' ', placeholder='Enter') #, header=None
 
-copy_button = Button(label="Get Clipboard Data")
+copy_button = Button(label="Process report")
 copy_button.js_on_event("button_click", CustomJS(code="""
     navigator.clipboard.readText().then(text => document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: text})))
     """))
@@ -73,7 +74,7 @@ if result:
                     writer.save()
 
                 st.download_button(
-                    label="Download Excel worksheets",
+                    label="Download report",
                     data=buffer,
                     file_name= a+".xlsx",
                     mime="application/vnd.ms-excel"
