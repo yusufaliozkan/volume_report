@@ -21,7 +21,8 @@ with st.expander('Instructions'):
     st.markdown('* Copy the text of volume report') 
     st.markdown('* Paste into the box below')
     st.markdown("* Press '**Ctrl and Enter**' to apply")
-    st.markdown("* Click '**Download report**'") 
+    st.markdown("* Click '**Download report**'")
+    st.markdown('Save the file to [SharePoint](https://imperiallondon.sharepoint.com/:f:/r/sites/GreenTeam2/Shared%20Documents/General/Spiral%20Symplectic%20(Volume)%20report?csf=1&web=1&e=okEv4g)')
 
 txt = st.text_area('Paste the volume report here:', '''''')
 df = pd.DataFrame(StringIO(txt))
