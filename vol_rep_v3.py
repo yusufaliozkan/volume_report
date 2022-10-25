@@ -40,7 +40,7 @@ if df is not None:
     df1[2] = df1[1].str.extract(pattern, expand=True)
     df_url = df1.drop([0,1], axis=1)
     df_url =  df_url.dropna()
-    df_url
+    st.dataframe(df_url)
     def make_hyperlink(value):
         url = "{}"
         return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
