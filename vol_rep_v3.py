@@ -26,7 +26,7 @@ txt = st.text_area('Paste the volume report here:', '''''')
 df = pd.DataFrame(StringIO(txt))
 
 if len(txt)>0:
-
+    st.success('Thank you for inserting the text!')
     if df is not None:
         df1 = df.drop([0])    
         df1[1] = df1[0].str.extract('Spiral:(.*)')
@@ -62,3 +62,4 @@ if len(txt)>0:
         
 else:
     st.error('Paste the volume report and press "**Ctrl + Enter**" to download the spreadsheet!', icon="🚨")
+    st.stop()
