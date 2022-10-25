@@ -21,8 +21,7 @@ st.markdown('* Paste into the box below')
 st.markdown("* Press '**Ctrl and Enter**' to apply")
 st.markdown("* Click '**Download report**'") 
 
-txt = st.text_area('Paste the volume report here:', '''
-    ''')
+txt = st.text_area('Paste the volume report here:', '''''')
 df = pd.DataFrame(StringIO(txt))
 
 if len(txt)>0:
