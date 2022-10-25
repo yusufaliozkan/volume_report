@@ -22,7 +22,7 @@ st.markdown("# Spiral Symplectic Report processor")
 # st.sidebar.markdown("# Spiral Symplectic Report processor")
 st.markdown('* Copy the text of volume report') 
 st.markdown('* Paste into the box below')
-st.markdown("* Press *Ctrl + Enter* to apply")
+st.markdown("* Press **Ctrl + Enter** to apply")
 st.markdown("* Press 'Download report'")            
 
 txt = st.text_area('Paste the volume report here:', '''
