@@ -79,5 +79,5 @@ if st.button('Press here to start'):
                         file_name= a+".xlsx",
                         mime="application/vnd.ms-excel"
                     )
-else:
-        st.write("**Please paste the volume report!**")                    
+# else:
+#         st.write("**Please paste the volume report!**")                    
