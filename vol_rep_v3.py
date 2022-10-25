@@ -40,6 +40,7 @@ if df is not None:
         url = "{}"
         return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
     df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
+    df_url
     df_split = np.array_split(df_url, 2)
     if df_split is not None:
         buffer = io.BytesIO()
