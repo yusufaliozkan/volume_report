@@ -26,7 +26,7 @@ st.markdown('* Copy the text of volume report')
 st.markdown('* Paste into the box below')
 st.markdown("* Click 'Press here to start'")
 st.markdown("* Click 'Process report' (if a notification comes up, click 'Allow'.)")
-st.markdown("* Press 'Download report'")
+st.markdown("* Click 'Download report'")
 
 txt=st.text_area('Paste the volume report text here: ', ' ', placeholder='Enter') #, header=None
 if st.button('Press here to start'):    
