@@ -15,8 +15,8 @@ st.image(path, width=300)
 
 st.title('Spiral Symplectic Report processing tool') 
 
-st.sidebar.markdown("# Spiral Symplectic Report processor")
-st.sidebar.expander('Instructions')
+# st.sidebar.markdown("# Spiral Symplectic Report processor")
+
 with st.expander('Instructions'):
     st.markdown('* Copy the text of volume report') 
     st.markdown('* Paste into the box below')
