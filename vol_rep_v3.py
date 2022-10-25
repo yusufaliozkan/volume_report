@@ -40,7 +40,7 @@ if df is not None:
     df1[2] = df1[1].str.extract(pattern, expand=True)
     df_url = df1.drop([0,1], axis=1)
     df_url =  df_url.dropna()
-    st.dataframe(df_url, 200)
+    df_show = df_url
     def make_hyperlink(value):
         url = "{}"
         return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
@@ -64,3 +64,4 @@ if df is not None:
             file_name= a+".xlsx",
             mime="application/vnd.ms-excel"
         )
+    st.dataframe(df_show, 400)
