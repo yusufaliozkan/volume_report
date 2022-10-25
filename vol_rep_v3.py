@@ -16,14 +16,18 @@ import pandas as pd
 from io import StringIO
 
 # Setting the app page layout
-st.set_page_config(layout = "centered", page_title='Spiral Symplectic Report processor')
-st.markdown("# Spiral Symplectic Report processor")
+st.set_page_config(layout = "centered", page_title='Spiral Symplectic Report processing tool', page_icon='https://pbs.twimg.com/profile_images/1509826209563263008/cNh9JRjd_400x400.jpg')
+path='https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Logo_for_Imperial_College_London.svg/2560px-Logo_for_Imperial_College_London.svg.png'
+st.image(path, width=300)
+
+st.title('Spiral Symplectic Report processing tool') 
 
 # st.sidebar.markdown("# Spiral Symplectic Report processor")
 st.markdown('* Copy the text of volume report') 
 st.markdown('* Paste into the box below')
-st.markdown("* Press **Ctrl + Enter** to apply")
-st.markdown("* Press 'Download report'")            
+st.markdown("* Click 'Press here to start'")
+st.markdown("* Click 'Process report' (if a notification comes up, click 'Allow'.)")
+st.markdown("* Click 'Download report'") 
 
 txt = st.text_area('Paste the volume report here:', '''
     ''')
