@@ -16,11 +16,12 @@ st.image(path, width=300)
 st.title('Spiral Symplectic Report processing tool') 
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
-    with st.expander('Instructions'):
-        st.markdown('* Copy the text of volume report') 
-        st.markdown('* Paste into the box below')
-        st.markdown("* Press '**Ctrl and Enter**' to apply")
-        st.markdown("* Click '**Download report**'") 
+st.sidebar.expander('Instructions')
+with st.expander('Instructions'):
+    st.markdown('* Copy the text of volume report') 
+    st.markdown('* Paste into the box below')
+    st.markdown("* Press '**Ctrl and Enter**' to apply")
+    st.markdown("* Click '**Download report**'") 
 
 txt = st.text_area('Paste the volume report here:', '''''')
 df = pd.DataFrame(StringIO(txt))
