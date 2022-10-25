@@ -67,8 +67,8 @@ if result:
 
                 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
                     # Write each dataframe to a different worksheet.
-                    df_split[0].to_excel(writer, sheet_name='Kim', header=False, index=False)
-                    df_split[1].to_excel(writer, sheet_name='Yusuf', header=False, index=False)
+                    df_split[0].to_excel(writer, sheet_name='K', header=False, index=False)
+                    df_split[1].to_excel(writer, sheet_name='Y', header=False, index=False)
 
                     # Close the Pandas Excel writer and output the Excel file to the buffer
                     writer.save()
