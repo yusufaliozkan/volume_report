@@ -21,10 +21,11 @@ st.set_page_config(layout = "wide", page_title='Spiral Symplectic Report process
 st.markdown("# Spiral Symplectic Report processor")
 
 st.sidebar.markdown("# Spiral Symplectic Report processor")
-st.markdown('* Copy the text of volume report') 
-st.markdown('* Paste into the box below')
-st.markdown("* Click 'Process report' (if a notification comes up, click 'Allow'.)")
+st.markdown('* Copy the text of volume report from ASK') 
+st.markdown('* Paste the copied text into the box below')
+st.markdown("* Click 'Process report' ( **if a notification comes up on the browser, click 'Allow'**.)")
 st.markdown("* Press 'Download report'")
+st.markdown("* Refresh the browser for the next process")
 
 txt=st.text_area('Paste the volume report text here: ', ' ', placeholder='Enter') #, header=None
 
