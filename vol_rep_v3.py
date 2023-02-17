@@ -41,6 +41,7 @@ if len(txt)>0:
             url = "{}"
             return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
         df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
+        number = st.number_input("How many sheets you'd like to create?")
         df_split = np.array_split(df_url, 2)
         if df_split is not None:
             buffer = io.BytesIO()
