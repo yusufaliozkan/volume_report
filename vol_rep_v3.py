@@ -52,7 +52,7 @@ if len(txt)>0:
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
                 # Write each dataframe to a different worksheet.
                 for i in range(number):
-                    df_split[i].to_excel(writer, sheet_name='i', header=False, index=False)
+                    df_split[i].to_excel(writer, sheet_name=i, header=False, index=False)
                 # df_split[0].to_excel(writer, sheet_name='K', header=False, index=False)
                 # df_split[1].to_excel(writer, sheet_name='Y', header=False, index=False)
 
