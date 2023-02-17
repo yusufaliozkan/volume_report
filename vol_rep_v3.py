@@ -54,6 +54,8 @@ if len(txt)>0:
                 for i in range(number):
                     if i==0:
                         sheet_name='K'
+                    if i==1:
+                        sheet_name='Y'
                     df_split[i].to_excel(writer, sheet_name=sheet_name, header=False, index=False)
 
 
