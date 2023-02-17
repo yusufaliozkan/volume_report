@@ -54,7 +54,7 @@ if len(txt)>0:
                 for i in range(number):
                     if i==0:
                         sheet_name='K'
-                    df_split[i].to_excel(writer, sheet_name=str(i), header=False, index=False)
+                    df_split[i].to_excel(writer, sheet_name=sheet_name, header=False, index=False)
 
 
                 # df_split[0].to_excel(writer, sheet_name='K', header=False, index=False)
