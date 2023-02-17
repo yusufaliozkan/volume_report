@@ -43,8 +43,7 @@ if len(txt)>0:
         df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
 
         number = st.number_input("How many sheets you'd like to create?", max_value=5, min_value=1, value=2)
-        number
-
+        
         df_split = np.array_split(df_url, 2)
         if df_split is not None:
             buffer = io.BytesIO()
@@ -52,8 +51,10 @@ if len(txt)>0:
             a = 'Weekly Spiral Symplectic Report - '+today
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
                 # Write each dataframe to a different worksheet.
-                df_split[0].to_excel(writer, sheet_name='K', header=False, index=False)
-                df_split[1].to_excel(writer, sheet_name='Y', header=False, index=False)
+                for i in range(number):
+                    df_split[i].to_excel(writer, sheet_name='i', header=False, index=False)
+                # df_split[0].to_excel(writer, sheet_name='K', header=False, index=False)
+                # df_split[1].to_excel(writer, sheet_name='Y', header=False, index=False)
 
                 # Close the Pandas Excel writer and output the Excel file to the buffer
                 writer.save()
