@@ -42,7 +42,7 @@ if len(txt)>0:
             return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
         df_url[2] = df_url[2].apply(lambda x: make_hyperlink(x))
 
-        number = st.number_input("How many sheets you'd like to create?", max_value=5, min_value=1, value=2)
+        number = st.number_input("How many sheets you'd like to create?", max_value=4, min_value=1, value=2)
         
         df_split = np.array_split(df_url, number)
         if df_split is not None:
@@ -60,9 +60,6 @@ if len(txt)>0:
                         sheet_name='P3'
                     if i==3:
                         sheet_name='P4'
-                    if i==4:
-                        sheet_name='P5'
-
                     df_split[i].to_excel(writer, sheet_name=sheet_name, header=False, index=False)
 
 
