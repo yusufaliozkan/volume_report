@@ -44,7 +44,7 @@ if len(txt)>0:
 
         number = st.number_input("How many sheets you'd like to create?", max_value=5, min_value=1, value=2)
         
-        df_split = np.array_split(df_url, 2)
+        df_split = np.array_split(df_url, number)
         if df_split is not None:
             buffer = io.BytesIO()
             today = date.today().isoformat()
