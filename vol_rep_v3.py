@@ -66,7 +66,7 @@ if len(txt)>0:
                 # df_split[1].to_excel(writer, sheet_name='Y', header=False, index=False)
 
                 # Close the Pandas Excel writer and output the Excel file to the buffer
-                writer.save()
+                writer.close()
 
             st.download_button(
                 label="Download report",
