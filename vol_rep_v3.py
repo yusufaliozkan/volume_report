@@ -9,7 +9,7 @@ from datetime import date
 from io import StringIO
 
 # Setting the app page layout
-st.set_page_config(layout = "centered", page_title='Volume Report processing tool', page_icon='https://pbs.twimg.com/profile_images/1509826209563263008/cNh9JRjd_400x400.jpg')
+st.set_page_config(layout = "centered", page_title='Volume Report processing tool', page_icon='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.crunchbase.com%2Forganization%2Fimperial-college-london&psig=AOvVaw3O266_oGjzmP2Dl1gBLIkY&ust=1686995303665000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNCbzbDBx_8CFQAAAAAdAAAAABAJ')
 path='https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Logo_for_Imperial_College_London.svg/2560px-Logo_for_Imperial_College_London.svg.png'
 st.image(path, width=300)
 
