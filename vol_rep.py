@@ -22,7 +22,7 @@ st.set_page_config(layout = "centered", page_title='Spiral Symplectic Report pro
 path='https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Logo_for_Imperial_College_London.svg/2560px-Logo_for_Imperial_College_London.svg.png'
 st.image(path, width=300)
 
-st.title('Spiral Symplectic Report processing tool') 
+st.title('Spiral Symplectic Report processing tool.') 
 
 # st.sidebar.markdown("# Spiral Symplectic Report processor")
 st.markdown('* Copy the text of volume report') 
