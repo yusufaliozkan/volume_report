@@ -9,9 +9,9 @@ from datetime import date
 from io import StringIO
 
 # Setting the app page layout
-st.set_page_config(layout = "centered", page_title='Volume Report processing tool', page_icon='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ol2lcon3zrdrcu6v1jo7')
-path='https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Logo_for_Imperial_College_London.svg/2560px-Logo_for_Imperial_College_London.svg.png'
-st.image(path, width=300)
+st.set_page_config(layout = "centered", page_title='Volume Report processing tool', page_icon='https://github.com/yusufaliozkan/volume_report/blob/main/Ilogo.PNG?raw=true')
+path='https://github.com/yusufaliozkan/volume_report/blob/main/IMPERIAL_logo_RGB_Blue_2024.png?raw=true'
+st.image(path, width=400)
 
 st.title('Spiral Symplectic Report processing tool') 
 
