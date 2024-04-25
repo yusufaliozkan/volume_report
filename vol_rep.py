@@ -18,8 +18,8 @@ import pandas as pd
 from io import StringIO
 
 # Setting the app page layout
-st.set_page_config(layout = "centered", page_title='Spiral Symplectic Report processing tool', page_icon='https://pbs.twimg.com/profile_images/1509826209563263008/cNh9JRjd_400x400.jpg')
-path='https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Logo_for_Imperial_College_London.svg/2560px-Logo_for_Imperial_College_London.svg.png'
+st.set_page_config(layout = "centered", page_title='Spiral Symplectic Report processing tool', page_icon='https://github.com/yusufaliozkan/volume_report/blob/main/Ilogo.PNG?raw=true')
+path='https://github.com/yusufaliozkan/volume_report/blob/main/IMPERIAL_logo_RGB_Blue_2024.png?raw=true'
 st.image(path, width=300)
 
 st.title('Spiral Symplectic Report processing tool') 
